@@ -1,7 +1,22 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "del-dist": "lerna exec --parallel -- del-cli dist",
+    "prebuild": "yarn del-dist",
+    "build": "lerna exec -- babel src -d dist --ignore test.js",
+    "start": "node packages/project-1/dist/"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "del-cli": "^1.1.0",
     "lerna": "^3.13.3"
-  }
+  },
+  "dependencies": {}
 }
